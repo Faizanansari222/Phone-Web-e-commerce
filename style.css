@@ -1,0 +1,28 @@
+nav{
+    background-color: #48afff;
+}
+.microphone-text{
+    color: #48afff;
+}
+.card{
+    width: auto;
+    height: auto;
+}
+.navbar2{
+    width: auto;
+
+    background-color: rgb(252, 249, 240);
+}
+body{
+    /* display: flex; */
+    background-color: rgb(228, 228, 228);
+}
+
+.pro-div{
+    height:800px;
+}
+
+.pro-img{
+    margin-bottom:100px ;
+    height:300px ;
+}
