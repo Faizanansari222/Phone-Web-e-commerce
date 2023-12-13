@@ -80,9 +80,10 @@
 //   }
 //
 let data;
-let btn = document.querySelector(".cartBtn");
+let cartBtn = document.querySelector(".cartBtn");
 let productDisplay = document.querySelector(".main");
-let object = axios.get("https://fakestoreapi.com/products")
+axios
+  .get("https://fakestoreapi.com/products")
   .then((Response) => {
     data = Response.data;
     for (let i = 0; i <= Response.data.length; i++) {
@@ -91,10 +92,10 @@ let object = axios.get("https://fakestoreapi.com/products")
       
       <div class="m-3 pro-img">
     <img
-      class=""
-      src=" ${Response.data[i].image}"
+      class="border-buttom-2"
+      src="${Response.data[i].image}" 
       class="card-img-top"
-      alt="..."
+      alt="Images"
     /></div>
     <div class="card-body">
       <h5 class="card-title text-gray-800 text-lg mt-14 my-5 font-medium">
@@ -109,7 +110,7 @@ let object = axios.get("https://fakestoreapi.com/products")
         <h5 class="card-title my-5 text-gray-800 text-xl font-bold">
       ${Response.data[i].price} $
       </h5>
-      <button  onclick="addto(${i})"
+      <button  onclick="shop(${i})"
         href="#"
         class="my-14 px-5 flex items-center bg-sky-400 rounded-lg p-2  font-bold text-white"
         >
@@ -135,10 +136,9 @@ let object = axios.get("https://fakestoreapi.com/products")
 
 let arr = [];
 
-function addto(index) {
-
-  let product = { Response };
-  arr.push(product);
+function shop(i) {
+  // let product = { Response };
+  arr.push(data[i]);
 
   console.log(arr);
 
@@ -147,15 +147,11 @@ function addto(index) {
     icon: "success",
     title: "Your work has been saved",
     showConfirmButton: false,
-    timer: 1500
+    timer: 1500,
   });
 }
 
-
-
-function checkout (){
-  window.location = 'checkout.html'
-  localStorage.setItem('cartItems',JSON.stringify(arr))
-}
-
-btn.addEventListener('click' , checkout)
+cartBtn.addEventListener("click", function () {
+  localStorage.setItem("Items", JSON.stringify(arr));
+  window.location = "checkout.html";
+});
